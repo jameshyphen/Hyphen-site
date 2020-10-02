@@ -1,0 +1,58 @@
+[
+    {
+        "title": "Zound backend C# (ASP.NET Core 3)",
+        "description": "Zound is a social media in it's early stages. It is a huge project to work on, currently having some key functions like creating posts, searching/adding friends, and showing their posts.",
+        "type": "C# Backend RestAPI MsSQL",
+        "urls": {
+            "website": "https://github.com/Web-IV/1920-b1-be-dzhemaptula"
+        }
+    },
+    {
+        "title": "Zound frontend (Angular 9)",
+        "description": "Zound is a social media in it's early stages. It is a huge project to work on, currently having some key functions like creating posts, searching/adding friends, and showing their posts.",
+        "type": "Angular Frontend Framework",
+        "urls": {
+            "website": "https://github.com/Web-IV/1920-b1-fe-dzhemaptula"
+        }
+    },
+    {
+        "title": "Hogent Sessions Manager - Students + Professors (C# ASP.NET Core 3 + Razorpages + Javascript)",
+        "description": "This is a C# ASP.NET Core 3 application which manages sessions and attendances with barcode scanning on arrival.",
+        "type": "C# Backend Razorpages MsSQL",
+        "urls": {
+            "website": "https://github.com/jameshyphen/Project_II_Hogent_ASP.NET"
+        }
+    },
+    {
+        "title": "Hogent Sessions Manager - Administrators (Java + JavaFX)",
+        "description": "This is a Java(FX) application which manages sessions and users. This is meant for the professors/administrators at the school.",
+        "type": "Java Backend JavaFX MsSQL",
+        "urls": {
+            "website": "https://github.com/jameshyphen/Project_II_Hogent_JAVA"
+        }
+    },
+    {
+        "title": "PySnake (Python)",
+        "description": "Small 2 day project I made to learn python. Using lots of patterns in here as well.",
+        "type": "Python Backend",
+        "urls": {
+            "website": "https://github.com/jameshyphen/PySnake"
+        }
+    },
+    {
+        "title": "Mastermind Game",
+        "description": "Mastermind is a game in which you have to guess what the predefined combination of colors are on a board. ",
+        "type": "Java Backend JavaFX MsSQL",
+        "urls": {
+            "website": "https://github.com/jameshyphen/Mastermind---G19"
+        }
+    },
+    {
+        "title": "Cryptocurrency Predictions",
+        "description": "Time series forecasting, trading strategy execution, backtesting, paper and live trading.",
+        "type": "Deep Learning System Python FastAPI Backend",
+        "urls": {
+            "url": "Coming soon"
+        }
+    }
+]

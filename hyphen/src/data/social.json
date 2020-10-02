@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Email",
+        "icon": "mail_outline",
+        "href": "mailto:james.hyphen@gmail.com"
+    },
+    {
+        "title": "Linked In",
+        "icon": "fab fa-linkedin",
+        "href": "https://www.linkedin.com/in/dzhemaptula/"
+    },
+    {
+        "title": "Github",
+        "icon": "fab fa-github",
+        "href": "https://github.com/jameshyphen"
+    }
+]

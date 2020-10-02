@@ -1,12 +1,26 @@
 {
-  "name": "hyphen",
+  "name": "site",
   "private": true,
   "scripts": {
     "build": "gridsome build",
     "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "explore": "gridsome explore",
+    "predeploy": "npm run build && cp CNAME dist",
+    "deploy": "gh-pages -d dist --branch=master"
   },
   "dependencies": {
-    "gridsome": "^0.7.0"
+    "@gridsome/plugin-google-analytics": "^0.1.0",
+    "@gridsome/source-filesystem": "^0.6.2",
+    "assets-loader": "^0.5.2",
+    "gridsome": "^0.7.0",
+    "pts": "^0.9.4",
+    "typed.js": "^2.0.11",
+    "vuetify": "^2.0.18"
+  },
+  "devDependencies": {
+    "@mdi/font": "^4.4.95",
+    "@mdi/js": "^4.4.95",
+    "gh-pages": "^2.1.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }
