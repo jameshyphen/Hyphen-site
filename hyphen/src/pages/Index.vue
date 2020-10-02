@@ -1,23 +1,57 @@
 <template>
   <div class="fullscreen">
-    <div id="pt" class="superimposed fullscreen" style="pointer-events: all;"></div>
+    <div
+      id="pt"
+      class="superimposed fullscreen"
+      style="pointer-events: all"
+    ></div>
 
     <div
-      style="width: 100vw; padding-top: 15vh; display: flex; align-items:center; justify-content: space-around;"
+      style="
+        width: 100vw;
+        padding-top: 15vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      "
       class="superimposed"
     >
       <h1 id="header-text"></h1>
     </div>
 
     <div
-      style="width: 100vw; padding-top: 40vh; display: flex; align-items:center; justify-content:center;"
+      style="
+        width: 100vw;
+        padding-top: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
       class="superimposed"
     >
       <p id="typed"></p>
     </div>
+    <div
+      style="
+        width: 100vw;
+        padding-top: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+      class="superimposed"
+    >
+      <p id="typed2"></p>
+    </div>
 
     <div
-      style="width: 100vw; padding-top:60vh; display: flex; align-items:center; justify-content: space-around;"
+      style="
+        width: 100vw;
+        padding-top: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      "
       class="superimposed"
     >
       <!-- <a href="/about" style="color: inherit; text-decoration: none;"><button class="btn">About</button></a>
@@ -29,113 +63,135 @@
     </div>
 
     <div
-      style="padding-top:80vh;  width: 100vw; display: flex; justify-content: center;"
+      style="
+        padding-top: 80vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+      "
       class="superimposed"
     >
-    <a id="bottom-button" href="/about">
-      <g-image src="~/assets/prof_sq.png" style="height: 50px; width: 50px; border-radius: 50%; border: 2px white solid;" alt="Me" />
+      <a id="bottom-button" href="/about">
+        <g-image
+          src="~/assets/prof_sq.png"
+          style="
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 2px white solid;
+          "
+          alt="Me"
+        />
 
-        <p style="padding-top: 13px; font-size: 1em; padding-left: 12px; padding-top: 16px;">James "Dzhem" Hyphen</p>
-    </a>
+        <p
+          style="
+            padding-top: 13px;
+            font-size: 1em;
+            padding-left: 12px;
+            padding-top: 16px;
+          "
+        >
+          James "Dzhem" Hyphen
+        </p>
+      </a>
     </div>
   </div>
 </template>
 
 
 <script>
-import Typed from 'typed.js'
-import {Pt, Group, CanvasSpace, Geom, Curve, Form, VisualForm, Const, Line} from 'pts'
+import Typed from "typed.js";
+import {
+  Pt,
+  Group,
+  CanvasSpace,
+  Geom,
+  Curve,
+  Form,
+  VisualForm,
+  Const,
+  Line,
+} from "pts";
 
 export default {
   metaInfo: {
     title: "Company Website",
     meta: [
       {
-        name: 'description',
-        content: "Curiosity - Creativity - Contribution. Software and Machine Learning Engineering."
+        name: "description",
+        content:
+          "Curiosity - Creativity - Contribution. Software and Machine Learning Engineering.",
       },
       { property: "og:title", content: "Theodoros Ntakouris" },
-      { property: "og:type", content: "website" }
-    ]
+      { property: "og:type", content: "website" },
+    ],
   },
-  mounted: function() {
+  mounted: function () {
     new Typed("#typed", {
-      strings: [
-        "Software Development.",
-        "Design Patterns.",
-        "Architecture Design.",
-        "RestfulAPI.",
-      ],
-      typeSpeed: 40,
+      strings: ["Software Engineering"],
+      typeSpeed: 20,
       startDelay: 1500,
+      loop: false,
+      showCursor: false,
+    });
+    new Typed("#typed2", {
+      strings: ["Python", "Vue", "C# ASP.NET", "Java", "Angular"],
+      typeSpeed: 30,
+      startDelay: 2500,
       loop: true,
-      showCursor: false
+      showCursor: false,
+    });
+    var space = new CanvasSpace("#pt");
+    space.setup({ bgcolor: "black" });
+
+    var form = space.getForm();
+    var pairs = [];
+
+    space.add({
+      start: (bound) => {
+        let r = space.size.minValue().value / 2;
+
+        // create 200 lines
+        for (let i = 0; i < 200; i++) {
+          let ln = new Group(Pt.make(2, r, true), Pt.make(2, -r, true));
+          ln.moveBy(space.center).rotate2D((i * Math.PI) / 200, space.center);
+          pairs.push(ln);
+        }
+      },
+
+      animate: (time, ftime) => {
+        for (let i = 0, len = pairs.length; i < len; i++) {
+          // rotate each line by 0.1 degree and check collinearity with pointer
+          let ln = pairs[i];
+          ln.rotate2D(Const.one_degree / 10, space.center);
+          let collinear = Line.collinear(ln[0], ln[1], space.pointer, 0.1);
+
+         
+          // if not collinear, color the line based on whether the pointer is on left or right side
+          let side = Line.sideOfPt2D(ln, space.pointer);
+          form
+            .stroke(side < 0 ? "rgba(255,255,0,.1)" : "rgba(0,255,255,.1)")
+            .line(ln);
+          form.fillOnly("rgba(255,255,255,0.8").points(ln, 0.5);
+        }
+
+      },
     });
 
-    var space = new CanvasSpace("#pt")
-    space.setup({bgcolor: "black"})
-
-    var form = space.getForm()
-  var pairs = [];
-
-  space.add({ 
-
-    start:( bound ) => {
-      let r = space.size.minValue().value/2;
-
-      // create 200 lines
-      for (let i=0; i<200; i++) {
-        let ln = new Group( Pt.make(2, r, true), Pt.make(2, -r, true) );
-        ln.moveBy( space.center ).rotate2D( i*Math.PI/200, space.center );
-        pairs.push(ln );
-      }
-    }, 
-
-    animate: (time, ftime) => {
-
-      for (let i=0, len=pairs.length; i<len; i++) {
-
-        // rotate each line by 0.1 degree and check collinearity with pointer
-        let ln = pairs[i];
-        ln.rotate2D( Const.one_degree/10, space.center );
-        let collinear = Line.collinear( ln[0], ln[1], space.pointer, 0.1);
-
-        if (collinear) {
-          form.stroke("#fff").line(ln);
-
-        } else {
-          // if not collinear, color the line based on whether the pointer is on left or right side
-          let side = Line.sideOfPt2D( ln, space.pointer );
-          form.stroke( (side<0) ? "rgba(255,255,0,.1)" : "rgba(0,255,255,.1)" ).line( ln );
-        }
-        form.fillOnly("rgba(255,255,255,0.8").points( ln, 0.5);
-      }
-
-      form.fillOnly("#f03").point( space.pointer, 3, "circle");
-      
-    }
-
-  });
-  
-
-    space
-      .bindMouse()
-      .bindTouch()
-      .play();
-  }
+    space.bindMouse().bindTouch().play();
+  },
 };
 </script>
 
 <style scoped>
-
-#header-text{
+#header-text {
   pointer-events: all;
   padding: 8px;
   padding-top: 9px;
 }
 
 #header-text:after {
-  content: '(-)yphen';
+  content: "(-)yphen";
 }
 
 #header-text:hover {
@@ -146,17 +202,17 @@ export default {
 }
 
 #header-text:hover:after {
-  content: 'Software';
+  content: "Software";
 }
 
 #header-text:active:after {
-  content: 'Engineering';
+  content: "Engineering";
 }
 
 #bottom-button {
   box-sizing: border-box;
   pointer-events: all;
-  display: flex; 
+  display: flex;
   justify-content: center;
   padding: 8px;
   padding-top: 9px;
@@ -212,13 +268,13 @@ body {
   color: #112233;
 }
 
-#hyphen-button{
+#hyphen-button {
   font-size: 100px;
   text-decoration: none;
-	text-transform: uppercase;
-	background: linear-gradient(to right, white 0%, black 100%);
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  background: linear-gradient(to right, white 0%, black 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding: 0% 1% 1% 1%;
 }
 
@@ -299,7 +355,7 @@ p {
   }
 
   p {
-      font-size: 1em;
+    font-size: 1em;
   }
 }
 </style>

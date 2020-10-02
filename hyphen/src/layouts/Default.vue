@@ -53,7 +53,7 @@
         </a>
       </v-app-bar>
 
-      <v-content>
+      <v-main>
         <v-container fluid fill-height>
           <v-layout fill-width>
             <div class="col-10 mx-auto ">
@@ -61,7 +61,7 @@
             </div>
           </v-layout>
         </v-container>
-      </v-content>
+      </v-main>
 
       <!-- <v-footer app inset>
         <span class="footer">@footer</span>
@@ -69,38 +69,98 @@
     </v-app>
 </template>
 
-<static-query>
-query {
-  metadata {
-    siteName
+
+<script>
+import menuItems from "~/data/menu.json"
+import socialEntries from "~/data/social.json"
+
+export default {
+  props: ['navbarTitle'],
+  name: "Default",
+  metaInfo: {
+    meta: [
+      { property: "og:title", content: "Theodoros Ntakouris" },
+      { property: "og:type", content: "website" }
+    ]
+  },
+  data() {
+    return {
+      title: this.navbarTitle ? this.navbarTitle : '',
+      menuItems,
+      socialEntries,
+      drawer: null
+    };
   }
-}
-</static-query>
+};
+</script>
 
 <style>
+.v-expansion-panel {
+  background-color: black !important;
+}
+
+.v-expansion-panel-content {
+  background-color: black;
+}
+
+a.v-btn {
+  border-radius: 0;
+  font-weight: bold;
+}
+
+a.v-btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.icon-fix {
+  font-weight: normal !important;
+  background-color: transparent !important;
+}
+
+.a-fix:hover, .icon-fix:hover {
+  background-color: transparent !important;
+}
+
+.v-toolbar__content {
+  background-color: black;
+}
+
+.v-navigation-drawer__content {
+  background-color: black;
+}
+
+.v-data-table, .v-card {
+  background-color: black !important;
+}
+
+.v-content, footer {
+  background-color: black !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  margin:0;
-  padding:0;
-  line-height: 1.5;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+.fill-width {
+  width: 100%;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
+.footer {
+  font-size: 14px;
 }
 
-.nav__link {
-  margin-left: 20px;
+@media screen and (max-width: 670px) {
+  .toolbar-icons {
+    display: none;
+  }
+  .col-10 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
 }
 </style>

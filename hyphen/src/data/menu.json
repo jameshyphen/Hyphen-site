@@ -11,17 +11,6 @@
         "sub": true
     },
     {
-        "title": "CV",
-        "icon": "account_box",
-        "href": "/cv"
-    },
-    {
-        "title": "Medium Blog",
-        "icon": "notes",
-        "href": "https://medium.com/@zarkopafilis",
-        "target": "_blank"
-    },
-    {
         "title": "Made With",
         "icon": "build",
         "href": "/tooling",

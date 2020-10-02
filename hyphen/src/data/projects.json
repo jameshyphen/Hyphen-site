@@ -1,6 +1,6 @@
 [
     {
-        "title": "Zound backend C# (ASP.NET Core 3)",
+        "title": "Zound Backend",
         "description": "Zound is a social media in it's early stages. It is a huge project to work on, currently having some key functions like creating posts, searching/adding friends, and showing their posts.",
         "type": "C# Backend RestAPI MsSQL",
         "urls": {
@@ -8,7 +8,7 @@
         }
     },
     {
-        "title": "Zound frontend (Angular 9)",
+        "title": "Zound Frontend",
         "description": "Zound is a social media in it's early stages. It is a huge project to work on, currently having some key functions like creating posts, searching/adding friends, and showing their posts.",
         "type": "Angular Frontend Framework",
         "urls": {
@@ -16,7 +16,7 @@
         }
     },
     {
-        "title": "Hogent Sessions Manager - Students + Professors (C# ASP.NET Core 3 + Razorpages + Javascript)",
+        "title": "Hogent Sessions",
         "description": "This is a C# ASP.NET Core 3 application which manages sessions and attendances with barcode scanning on arrival.",
         "type": "C# Backend Razorpages MsSQL",
         "urls": {
@@ -24,7 +24,7 @@
         }
     },
     {
-        "title": "Hogent Sessions Manager - Administrators (Java + JavaFX)",
+        "title": "Hogent Sessions",
         "description": "This is a Java(FX) application which manages sessions and users. This is meant for the professors/administrators at the school.",
         "type": "Java Backend JavaFX MsSQL",
         "urls": {
@@ -52,7 +52,7 @@
         "description": "Time series forecasting, trading strategy execution, backtesting, paper and live trading.",
         "type": "Deep Learning System Python FastAPI Backend",
         "urls": {
-            "url": "Coming soon"
+            "website": "Coming soon"
         }
     }
 ]
