@@ -46,13 +46,5 @@
         "urls": {
             "website": "https://github.com/jameshyphen/Mastermind---G19"
         }
-    },
-    {
-        "title": "Cryptocurrency Predictions",
-        "description": "Time series forecasting, trading strategy execution, backtesting, paper and live trading.",
-        "type": "Deep Learning System Python FastAPI Backend",
-        "urls": {
-            "website": "Coming soon"
-        }
     }
 ]
