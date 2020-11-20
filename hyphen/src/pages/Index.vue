@@ -1,5 +1,5 @@
 <template>
-  <div class="fullscreen">
+  <div>
     <div
       id="pt"
       class="superimposed fullscreen"
@@ -59,7 +59,7 @@
       <a href="/projects" style="color: inherit; text-decoration: none;"><button class="btn">Projects</button></a>
 
       <a href="/cv" style="color: inherit; text-decoration: none;"><button class="btn">CV</button></a> -->
-      <!-- <a href="/about" id="hyphen-button">(-)</a> -->
+      <!-- <a href="/about" id="hyphen_2-button">(-)</a> -->
     </div>
 
     <div
@@ -154,7 +154,7 @@ export default {
 
         space.add({
           start: (bound) => {
-            let r = space.size.minValue().value / 2;
+            let r = space.size.minValue().value;
 
             // create 200 lines
             for (let i = 0; i < 200; i++) {
@@ -168,14 +168,14 @@ export default {
             for (let i = 0, len = pairs.length; i < len; i++) {
               // rotate each line by 0.1 degree and check collinearity with pointer
               let ln = pairs[i];
-              ln.rotate2D(Const.one_degree / 10, space.center);
+              ln.rotate2D(Const.one_degree / 40, space.center);
               let collinear = Line.collinear(ln[0], ln[1], space.pointer, 0.1);
 
             
               // if not collinear, color the line based on whether the pointer is on left or right side
               let side = Line.sideOfPt2D(ln, space.pointer);
               form
-                .stroke(side < 0 ? "rgba(255,255,0,.1)" : "rgba(0,255,255,.1)")
+                .stroke(side < 0 ? "rgba(255,166,122,0.13)" : "rgba(25,141,182,.15)")
                 .line(ln);
               form.fillOnly("rgba(255,255,255,0.8").points(ln, 0.5);
             }
@@ -187,15 +187,16 @@ export default {
 
       }
   },
-  mounted: function () {
+  mounted: async function () {
     //First execute this
     this.initializeBackgroundAnimation()
 
     //then execute this then wait 1700ms
     this.startTypingTopText()
-
     //then execute this
-    this.startTypingBottomText()
+    setTimeout(() => {
+      this.startTypingBottomText()
+    }, 1700)
     // setTimeout(this.startTypingBottomText(), 1700) doesnt work
     
   },
@@ -207,12 +208,12 @@ export default {
   pointer-events: all;
   padding: 8px;
   padding-top: 9px;
-  background-image: url(../assets/hyphen.png);
+  background-image: url(../assets/hyphen_2.png);
   object-fit: cover;
   background-size: 600px;
   display: block;
-  width: 134px; 
-  height: 100px;
+  width: 136px; 
+  height: 140px;
   content:"";
   transition-property: width filter;
   transition-duration: 0.25s;
@@ -284,7 +285,7 @@ body {
   color: #112233;
 }
 
-#hyphen-button {
+#hyphen_2-button {
   font-size: 100px;
   text-decoration: none;
   text-transform: uppercase;
@@ -353,6 +354,27 @@ p {
     font-size: 16px;
     width: 140px;
   }
+    #header-text {
+    pointer-events: all;
+    padding: 4px;
+    padding-top: 4px;
+    background-image: url(../assets/hyphen_2.png);
+    object-fit: cover;
+    background-size: 450px;
+    display: block;
+    width: 104px; 
+    height: 125px;
+    content:"";
+    transition-property: width filter;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    filter: grayscale(100%) contrast(200%);
+  }
+
+  #header-text:hover {
+    width: 450px;
+    filter: grayscale(0%) contrast(100%);
+  }
 }
 
 @media only screen and (max-width: 535px) {
@@ -362,6 +384,28 @@ p {
 
   .btn {
     font-size: 14px;
+  }
+  
+  #header-text {
+    pointer-events: all;
+    padding: 4px;
+    padding-top: 4px;
+    background-image: url(../assets/hyphen_2.png);
+    object-fit: cover;
+    background-size: 350px;
+    display: block;
+    width: 80px; 
+    height: 85px;
+    content:"";
+    transition-property: width filter;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    filter: grayscale(100%) contrast(200%);
+  }
+
+  #header-text:hover {
+    width: 350px;
+    filter: grayscale(0%) contrast(100%);
   }
 }
 
@@ -373,5 +417,28 @@ p {
   p {
     font-size: 1em;
   }
+
+  #header-text {
+    pointer-events: all;
+    padding: 4px;
+    padding-top: 4px;
+    background-image: url(../assets/hyphen_2.png);
+    object-fit: cover;
+    background-size: 200px;
+    display: block;
+    width: 46px; 
+    height: 50px;
+    content:"";
+    transition-property: width filter;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    filter: grayscale(100%) contrast(200%);
+  }
+
+  #header-text:hover {
+    width: 200px;
+    filter: grayscale(0%) contrast(100%);
+  }
 }
+
 </style>
